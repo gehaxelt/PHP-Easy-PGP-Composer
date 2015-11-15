@@ -1,0 +1,4 @@
+<?php
+$CONTACTNAME = "MY NAME";
+$KEYFILE = "pub.asc";
+?>
