@@ -10,15 +10,14 @@ $(document).ready(function() {
 });
 
 function encryptMessage() {
-	if(publicKey == null) {
-		return displayError("Public key still not loaded!");
-	}
 	var message = $("#message").val();
 	var email = $("#mailfrom").val();
 	message += "\n\nFrom: " + email;
-
-	openpgp.encryptMessage(publicKey.keys, message).then(function(pgpMessage) {
-		$("#output").text(pgpMessage);
+	openpgp.encrypt({
+        message: openpgp.message.fromText(message),
+        publicKeys: thePublicKey,
+    }).then(function(data) {
+		$("#output").text(data.data);
 	});
 }
 

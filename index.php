@@ -60,7 +60,10 @@
         <script src="assets/js/openpgp.min.js"></script>
         <script src="assets/js/app.js"></script>
         <script>
-            var publicKey = openpgp.key.readArmored(<?php echo $PUBKEY; ?>);
+            var thePublicKey;
+            openpgp.key.readArmored(<?php echo $PUBKEY; ?>).then(function(data) {
+                thePublicKey = data.keys;
+            });
         </script>
     </body>
 </html>
